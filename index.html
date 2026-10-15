@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberThreat Index — Top 10 Latest Cybersecurity Attacks & Breaches</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #0F172A;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        }
+
+        .card-elevated {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 1px 2px -1px rgba(15, 23, 42, 0.03);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-elevated:hover {
+            border-color: #CBD5E1;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .subtle-grid-bg {
+            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 9999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-blue-100 selection:text-blue-900 min-h-screen flex flex-col">
+
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            <!-- Brand Identity -->
+            <a href="#" class="flex items-center gap-3 group focus:outline-none">
+                <div
+                    class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-sm shadow-blue-600/20 group-hover:bg-blue-700 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-bold text-slate-900 tracking-tight text-base">CyberSafe<span
+                            class="text-blue-600">Guide</span></span>
+                    <p class="text-xs text-slate-500 hidden sm:block">Quick Reference: Attack Types & Prevention</p>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+                <a href="#attacks-section" class="hover:text-blue-600 transition-colors">Top 10 Attacks</a>
+                <a href="#golden-rules" class="hover:text-blue-600 transition-colors">5 Golden Rules</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2">
+                <button onclick="copySummary()"
+                    class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 transition-all shadow-sm">
+                    <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span>Copy Cheat Sheet</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative bg-white border-b border-slate-200 overflow-hidden">
+        <div class="absolute inset-0 subtle-grid-bg opacity-40 pointer-events-none"></div>
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+            <div class="max-w-3xl">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-semibold mb-4">
+                    <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                    <span>BRIEF & ACTIONABLE GUIDE</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Top 10 Latest Cyber Attacks <span class="text-blue-600">& How to Prevent Them</span>
+                </h1>
+                <p class="mt-3 text-base text-slate-600 leading-relaxed">
+                    A simple, jargon-free overview of the 10 most common ways attackers target individuals and
+                    businesses today—and the exact steps to stop them.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <main id="attacks-section" class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Controls: Filter Pills + Search + View Toggle -->
+        <div
+            class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <!-- Category Filter Pills -->
+            <div class="flex items-center gap-1.5 flex-wrap">
+                <button onclick="setCategory('all')" data-cat="all"
+                    class="cat-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white transition-all">All
+                    (10)</button>
+                <button onclick="setCategory('Phishing & Scams')" data-cat="Phishing & Scams"
+                    class="cat-pill px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">Phishing
+                    & Scams</button>
+                <button onclick="setCategory('Malware')" data-cat="Malware"
+                    class="cat-pill px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">Malware</button>
+                <button onclick="setCategory('Network & Cloud')" data-cat="Network & Cloud"
+                    class="cat-pill px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">Network
+                    & Cloud</button>
+                <button onclick="setCategory('Web & AI')" data-cat="Web & AI"
+                    class="cat-pill px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">Web
+                    & AI</button>
+            </div>
+
+            <!-- Right Controls: Search & View Mode -->
+            <div class="flex items-center gap-2.5">
+                <div class="relative flex-1 sm:w-60">
+                    <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input id="search-input" type="text" oninput="renderContent()" placeholder="Quick search..."
+                        class="w-full pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-500 transition-all">
+                </div>
+
+                <!-- View Toggle: Cards vs Table -->
+                <div class="inline-flex p-1 rounded-xl bg-slate-100 border border-slate-200 shrink-0">
+                    <button id="btn-cards" onclick="setLayout('cards')"
+                        class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-white text-blue-600 shadow-sm transition-all">Cards</button>
+                    <button id="btn-table" onclick="setLayout('table')"
+                        class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all">Summary
+                        Table</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Grid View -->
+        <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Populated via JS -->
+        </div>
+
+        <!-- Compact Table View (Hidden by default) -->
+        <div id="table-view" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr
+                            class="bg-slate-50 border-b border-slate-200 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                            <th class="py-3.5 px-4 w-12">#</th>
+                            <th class="py-3.5 px-4">Attack Type</th>
+                            <th class="py-3.5 px-4">What It Is (In Brief)</th>
+                            <th class="py-3.5 px-4">How to Prevent It</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body" class="divide-y divide-slate-200 text-xs sm:text-sm">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden bg-white rounded-2xl border border-slate-200 p-10 text-center">
+            <p class="text-sm font-semibold text-slate-800">No matching attacks found.</p>
+            <button onclick="resetFilters()"
+                class="mt-3 px-3.5 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700">Show
+                All 10</button>
+        </div>
+
+        <section id="golden-rules" class="mt-12 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 border-b border-slate-100">
+                <div>
+                    <span class="text-xs font-mono font-semibold text-emerald-600 uppercase">Core Defense
+                        Checklist</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-0.5">5 Golden Rules That Stop 90%+ of Cyber Attacks
+                    </h2>
+                </div>
+                <span class="text-xs text-slate-500">Click any rule to mark it as done</span>
+            </div>
+
+            <div id="rules-list" class="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+                <!-- Populated via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        class="fixed bottom-5 right-5 z-50 hidden items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-medium shadow-lg">
+        <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-12">
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <span><strong>CyberSafeGuide</strong> — Brief Top 10 Cybersecurity Attacks & Prevention</span>
+            <span class="font-mono">2026 Quick Reference Edition</span>
+        </div>
+    </footer>
+
+    <script>
+        const attacksData = [
+            {
+                rank: '01',
+                title: 'AI Phishing, Vishing & Deepfakes',
+                category: 'Phishing & Scams',
+                risk: 'CRITICAL',
+                whatItIs: 'Attackers use fake login pages, AI-cloned voices, or urgent calls (vishing) pretending to be IT support or executives to steal your password and 2FA code.',
+                prevention: [
+                    'Use phishing-resistant Passkeys or Authenticator apps instead of SMS codes.',
+                    'Always verify urgent requests by calling back on an official, known phone number.',
+                    'Double-check the website URL before entering any login credentials.'
+                ]
+            },
+            {
+                rank: '02',
+                title: 'Ransomware Attacks',
+                category: 'Malware',
+                risk: 'CRITICAL',
+                whatItIs: 'Malicious software locks all your files or company systems and demands a ransom payment to unlock them or prevent private data from being leaked.',
+                prevention: [
+                    'Keep offline or immutable backups of important files that hackers cannot erase.',
+                    'Keep operating systems and antivirus/EDR software updated automatically.',
+                    'Never open unexpected email attachments or unknown USB drives.'
+                ]
+            },
+            {
+                rank: '03',
+                title: 'Infostealer Malware & Session Theft',
+                category: 'Malware',
+                risk: 'HIGH',
+                whatItIs: 'Lightweight malware hidden inside fake software installers or malicious ads steals saved passwords and active login cookies straight from your web browser.',
+                prevention: [
+                    'Avoid saving passwords in your web browser; use a dedicated Password Manager.',
+                    'Download apps and updates only from official vendor websites.',
+                    'Log out of sensitive accounts when finished and block unmanaged devices.'
+                ]
+            },
+            {
+                rank: '04',
+                title: 'Third-Party & Supply Chain Attacks',
+                category: 'Network & Cloud',
+                risk: 'CRITICAL',
+                whatItIs: 'Instead of hacking you directly, criminals compromise a trusted software vendor or third-party app integration (OAuth) to access your data.',
+                prevention: [
+                    'Regularly audit and remove unused third-party apps connected to your accounts.',
+                    'Give external vendors and plugins the minimum permissions required.',
+                    'Enforce Multi-Factor Authentication (MFA) on all contractor and partner logins.'
+                ]
+            },
+            {
+                rank: '05',
+                title: 'Business Email Compromise (BEC)',
+                category: 'Phishing & Scams',
+                risk: 'HIGH',
+                whatItIs: 'Scammers hijack or spoof a vendor or boss’s email account to send fake invoices or ask finance staff to wire money to a new bank account.',
+                prevention: [
+                    'Confirm any bank account or payment change via a live phone call first.',
+                    'Enable email anti-spoofing protections (SPF, DKIM, and DMARC).',
+                    'Flag emails coming from outside your organization with a visible warning banner.'
+                ]
+            },
+            {
+                rank: '06',
+                title: 'Unpatched Software & Zero-Day Exploits',
+                category: 'Network & Cloud',
+                risk: 'CRITICAL',
+                whatItIs: 'Hackers scan the internet for outdated VPNs, Wi-Fi routers, and software to break in through known security flaws before you install the fix.',
+                prevention: [
+                    'Turn on automatic updates for your OS, web browsers, and mobile apps.',
+                    'Patch internet-facing routers, firewalls, and VPNs within 48 hours of an alert.',
+                    'Replace outdated devices that no longer receive security updates.'
+                ]
+            },
+            {
+                rank: '07',
+                title: 'Password Reuse & Credential Stuffing',
+                category: 'Phishing & Scams',
+                risk: 'HIGH',
+                whatItIs: 'Automated bots test billions of leaked usernames and passwords from past data breaches across banking, shopping, and work accounts.',
+                prevention: [
+                    'Use a unique, 14+ character password for every single account.',
+                    'Turn on Multi-Factor Authentication (MFA) everywhere it is offered.',
+                    'Check if your email was leaked using breach alert tools and change reused passwords.'
+                ]
+            },
+            {
+                rank: '08',
+                title: 'Cloud & API Misconfigurations',
+                category: 'Network & Cloud',
+                risk: 'HIGH',
+                whatItIs: 'Sensitive customer files or databases are accidentally left open to the public due to incorrect cloud storage settings or unsecured APIs.',
+                prevention: [
+                    'Set all cloud storage buckets and shared folders to "Private" by default.',
+                    'Never hardcode API keys or passwords inside public code repositories.',
+                    'Run automated cloud security checks to spot public permissions early.'
+                ]
+            },
+            {
+                rank: '09',
+                title: 'Web Injection Attacks (SQLi & XSS)',
+                category: 'Web & AI',
+                risk: 'HIGH',
+                whatItIs: 'Attackers type malicious commands into website search bars, forms, or URLs to trick the site into handing over its database or hijacking visitors.',
+                prevention: [
+                    'Validate and sanitize all user input fields on websites and forms.',
+                    'Use parameterized queries (prepared statements) for all database calls.',
+                    'Place a Web Application Firewall (WAF) in front of public websites.'
+                ]
+            },
+            {
+                rank: '10',
+                title: 'AI Prompt Injection & Shadow AI Leaks',
+                category: 'Web & AI',
+                risk: 'HIGH',
+                whatItIs: 'Employees accidentally leak company secrets by pasting them into public AI chatbots, or attackers hide malicious instructions inside documents read by AI.',
+                prevention: [
+                    'Never paste passwords, private code, or customer data into public AI tools.',
+                    'Restrict AI assistants so they only access files the user is permitted to see.',
+                    'Require human approval before an AI agent can send emails or modify data.'
+                ]
+            }
+        ];
+
+        const goldenRules = [
+            { title: '1. Enable MFA / Passkeys', desc: 'Turn on 2-step verification on email, banking, and work logins.', done: true },
+            { title: '2. Unique Passwords', desc: 'Use a password manager so every account has a different password.', done: true },
+            { title: '3. Update Promptly', desc: 'Keep phones, laptops, browsers, and routers on auto-update.', done: false },
+            { title: '4. Verify Before Sending', desc: 'Confirm money transfers or password resets via a separate phone call.', done: false },
+            { title: '5. Back Up Offline', desc: 'Keep an automatic cloud or offline backup of your critical files.', done: false }
+        ];
+
+        let currentCategory = 'all';
+        let currentLayout = 'cards'; // 'cards' | 'table'
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = 'cat-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white transition-all';
+                } else {
+                    btn.className = 'cat-pill px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all';
+                }
+            });
+            renderContent();
+        }
+
+        function setLayout(layout) {
+            currentLayout = layout;
+            const btnCards = document.getElementById('btn-cards');
+            const btnTable = document.getElementById('btn-table');
+            if (layout === 'cards') {
+                btnCards.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-white text-blue-600 shadow-sm transition-all';
+                btnTable.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all';
+            } else {
+                btnTable.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-white text-blue-600 shadow-sm transition-all';
+                btnCards.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all';
+            }
+            renderContent();
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            setCategory('all');
+        }
+
+        function renderContent() {
+            const query = document.getElementById('search-input').value.trim().toLowerCase();
+            const filtered = attacksData.filter(item => {
+                const matchCat = currentCategory === 'all' || item.category === currentCategory;
+                const text = `${item.title} ${item.category} ${item.whatItIs} ${item.prevention.join(' ')}`.toLowerCase();
+                const matchQuery = !query || text.includes(query);
+                return matchCat && matchQuery;
+            });
+
+            const cardsGrid = document.getElementById('cards-grid');
+            const tableView = document.getElementById('table-view');
+            const tableBody = document.getElementById('table-body');
+            const emptyState = document.getElementById('empty-state');
+
+            if (filtered.length === 0) {
+                cardsGrid.classList.add('hidden');
+                tableView.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            if (currentLayout === 'cards') {
+                cardsGrid.classList.remove('hidden');
+                tableView.classList.add('hidden');
+
+                cardsGrid.innerHTML = filtered.map(item => `
+                    <article class="card-elevated rounded-2xl p-5 flex flex-col justify-between">
+                        <div>
+                            <!-- Header -->
+                            <div class="flex items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-blue-600 text-white">#${item.rank}</span>
+                                    <span class="px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-600">${item.category}</span>
+                                </div>
+                                <span class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold ${item.risk === 'CRITICAL' ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}">
+                                    ${item.risk}
+                                </span>
+                            </div>
+
+                            <!-- Attack Name & Brief Explanation -->
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900">${item.title}</h3>
+                            <p class="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <strong class="text-slate-800">What it is:</strong> ${item.whatItIs}
+                            </p>
+                        </div>
+
+                        <!-- Prevention Box -->
+                        <div class="mt-4 pt-3.5 border-t border-slate-100">
+                            <div class="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200/80">
+                                <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-800 mb-2">
+                                    <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                    </svg>
+                                    <span>How to Prevent It:</span>
+                                </div>
+                                <ul class="space-y-1.5 text-xs text-emerald-950">
+                                    ${item.prevention.map(step => `
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-emerald-600 font-bold">•</span>
+                                            <span>${step}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                `).join('');
+            } else {
+                cardsGrid.classList.add('hidden');
+                tableView.classList.remove('hidden');
+
+                tableBody.innerHTML = filtered.map(item => `
+                    <tr class="hover:bg-slate-50/80 transition-colors">
+                        <td class="py-3.5 px-4 font-mono font-bold text-blue-600 align-top">#${item.rank}</td>
+                        <td class="py-3.5 px-4 align-top">
+                            <div class="font-bold text-slate-900">${item.title}</div>
+                            <span class="inline-block mt-1 px-2 py-0.5 rounded text-[11px] bg-slate-100 text-slate-600">${item.category}</span>
+                        </td>
+                        <td class="py-3.5 px-4 text-slate-600 align-top max-w-xs leading-relaxed">${item.whatItIs}</td>
+                        <td class="py-3.5 px-4 align-top">
+                            <ul class="space-y-1 text-xs text-emerald-900">
+                                ${item.prevention.map(step => `<li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">✓</span><span>${step}</span></li>`).join('')}
+                            </ul>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        function renderRules() {
+            const container = document.getElementById('rules-list');
+            container.innerHTML = goldenRules.map((rule, idx) => `
+                <div onclick="toggleRule(${idx})" class="p-3.5 rounded-xl border cursor-pointer transition-all select-none ${rule.done ? 'bg-emerald-50/60 border-emerald-200' : 'bg-slate-50 border-slate-200 hover:border-blue-300'}">
+                    <div class="flex items-center justify-between gap-2 mb-1">
+                        <span class="text-xs font-bold text-slate-900">${rule.title}</span>
+                        <span class="w-4 h-4 rounded-full flex items-center justify-center text-[10px] ${rule.done ? 'bg-emerald-600 text-white' : 'bg-white border border-slate-300 text-transparent'}">✓</span>
+                    </div>
+                    <p class="text-[11px] text-slate-600 leading-normal">${rule.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function toggleRule(idx) {
+            goldenRules[idx].done = !goldenRules[idx].done;
+            renderRules();
+        }
+
+        function copySummary() {
+            const text = attacksData.map(a => `${a.rank}. ${a.title}\n   • Attack: ${a.whatItIs}\n   • Prevention: ${a.prevention.join(' ')}`).join('\n\n');
+            const textarea = document.createElement('textarea');
+            textarea.value = `TOP 10 CYBER ATTACKS & PREVENTION CHEAT SHEET\n\n${text}`;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('Copied Top 10 Cheat Sheet to clipboard!');
+            } catch (e) {
+                showToast('Unable to copy.');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        let toastTimer;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3000);
+        }
+
+        window.onload = function () {
+            renderContent();
+            renderRules();
+        };
+    </script>
+</body>
+
+</html>
